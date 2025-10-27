@@ -1,0 +1,283 @@
+
+:root{
+    --gold:#d4af37;
+  --gold-hover:#c19b2e;
+  --bg:#faf9f5;
+  --text:#333;
+  --muted:#777;
+  --card:#fff;
+  --border:#e0e0e0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Poppins',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+}
+header{
+  display:flex;justify-content:space-between;align-items:center;    
+  /* background:linear-gradient(135deg,var(--gold),#f7e8b2); */
+  padding:0.8rem 2rem;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+}
+.logo-area{
+  display:flex;align-items:center;gap:0.5rem;
+}
+.logo-area img{height:50px;width:auto;}
+.logo-area h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.5rem;
+  color:#fff;
+}
+nav{
+  display:flex;align-items:center;gap:0.3rem;
+}
+nav a,nav button{
+  padding:0.6rem 1.2rem;
+  background:none;border:none;cursor:pointer;
+  font-size:1rem;color:var(--text);
+  border-radius:6px;transition:0.2s;
+}
+nav a:hover,nav button:hover,nav a.active{
+  background:var(--gold);color:#fff;
+}
+nav button{
+  background:var(--gold);
+  color:#fff;font-weight:600;border-radius:20px;margin-left:0.5rem;
+}
+nav button:hover{background:var(--gold-hover)}
+.section{
+  max-width:1100px;margin:2rem auto;padding:2rem;
+  background:var(--muted);border-radius:12px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+  display:none;
+}
+.section.active{display:block}
+.section h2{
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  font-size:2rem;margin-bottom:1.5rem;color:var(--gold);
+  position:relative;
+}
+.section h2::after{
+  content:"";display:block;width:80px;height:3px;
+  background:var(--gold);margin:0.5rem auto;border-radius:3px;
+}
+/* Wedding Section */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;
+}
+.card{
+  background:#fffef8;border:1px solid var(--border);border-radius:10px;
+  overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  display:flex;flex-direction:column;
+}
+.card img{
+  width:100%;height:160px;object-fit:cover;
+}
+.card-body{padding:1rem;flex:1;display:flex;flex-direction:column}
+.card-body h3{
+  font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.5rem;color:var(--gold);
+}
+.card-body p{flex:1;font-size:0.9rem;color:var(--muted);margin-bottom:0.5rem}
+.card-body button{
+  background:var(--gold);border:none;color:#fff;
+  padding:0.6rem 1rem;border-radius:6px;cursor:pointer;font-weight:600;
+  transition:0.2s;
+}
+.card-body button:hover{background:var(--gold-hover)}
+/* Harga Section */
+.price-table{
+  width:100%;border-collapse:collapse;margin-top:1rem;
+}
+.price-table th,.price-table td{
+  border:1px solid var(--border);padding:0.8rem;text-align:left;
+}
+.price-table th{
+  background:var(--gold);color:#fff;text-align:center;
+}
+.price-table td ul{margin:0;padding-left:1.2rem}
+.price-btn{
+  display:inline-block;margin-top:0.5rem;
+  background:var(--gold);color:#fff;padding:0.5rem 1rem;
+  border-radius:6px;text-decoration:none;font-weight:600;
+}
+.price-btn:hover{background:var(--gold-hover)}
+/* Modal */
+.modal{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);
+  justify-content:center;align-items:center;z-index:999;
+}
+.modal.open{display:flex}
+.modal-card{
+  background:#fff;padding:2rem;border-radius:10px;
+  width:100%;max-width:420px;box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+.tabs{display:flex;margin-bottom:1rem;border-bottom:1px solid var(--border)}
+.tab-btn{
+  flex:1;text-align:center;padding:0.7rem;cursor:pointer;
+  font-weight:600;border-bottom:3px solid transparent;transition:0.2s;
+}
+.tab-btn.active{color:var(--gold);border-bottom:3px solid var(--gold)}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.modal-card input{
+  width:100%;padding:0.8rem;margin-bottom:1rem;
+  border:1px solid var(--border);border-radius:6px;
+}
+.action-btn{
+  width:100%;padding:0.8rem;background:var(--gold);border:none;color:#fff;
+  border-radius:6px;font-weight:600;cursor:pointer;transition:0.2s;
+}
+.action-btn:hover{background:var(--gold-hover)}
+.close-modal{
+  display:block;margin:0.5rem auto 0;background:none;border:none;
+  color:var(--muted);cursor:pointer;
+}
+.modal {
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);
+  justify-content:center;align-items:center;z-index:1000;
+}
+.modal.open {display:flex;}
+.modal-card {
+  background:#fff;padding:2rem;border-radius:10px;
+  width:90%;max-width:420px;box-shadow:0 6px 20px rgba(0,0,0,0.3);
+}
+.modal-card input {
+  width:100%;padding:0.8rem;margin-bottom:1rem;
+  border:1px solid #ccc;border-radius:6px;
+}
+.action-btn {
+  width:100%;padding:0.8rem;background:#d4af37;color:white;
+  border:none;border-radius:6px;font-weight:600;cursor:pointer;
+  transition:0.3s;
+}
+.action-btn:hover {background:#c19b2e;}
+.close-modal {
+  display:block;width:100%;margin-top:0.5rem;
+  background:#eee;border:none;padding:0.6rem;border-radius:6px;cursor:pointer;
+}
+.close-modal:hover {background:#ddd;}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.feature-card {
+  background: #fffef8;
+  border: 1px solid #e2d6a5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.feature-card .icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+  color: #d4af37;
+}
+.feature-card h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #c19b2e;
+}
+.feature-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+
+header {
+  background: linear-gradient(135deg, black, white );
+  padding: 1rem 2rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+
+/* Bagian kiri: logo + judul + menu */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.logo-area img {
+  height: 180px;
+  width: auto;
+  border-radius: 8px;
+}
+
+.logo-area h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin: center;
+}
+
+/* Menu navigasi */
+.sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sub-nav a {
+  padding: 0.45rem 3.5rem;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.sub-nav a:hover,
+.sub-nav a.active {
+  background: var(--gold-hover);
+}
+
+/* Tombol pojok kanan atas */
+.right-section {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+.auth-btn {
+  background: var(--gold);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-btn:hover {
+  background: var(--gold-hover);
+}
