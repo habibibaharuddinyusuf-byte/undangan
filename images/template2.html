@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Undangan Digital — Tema Minimal White</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#fafafa; /* putih lembut */
+      --card:#ffffff;
+      --accent:#f0f0f0;
+      --primary:#111;
+      --secondary:#666;
+      --border:#e0e0e0;
+      --brand:#b48b5a; /* sedikit warm gold untuk aksen */
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--primary);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:100vh;
+    }
+
+    .container{
+      width:100%;
+      max-width:960px;
+      background:var(--card);
+      border-radius:16px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.05);
+      overflow:hidden;
+      border:1px solid var(--border);
+      display:grid;
+      grid-template-columns: 1fr 380px;
+    }
+
+    /* left: hero */
+    .hero{
+      padding:48px 40px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:center;
+    }
+
+    .brand{
+      display:flex;gap:14px;align-items:center;
+    }
+    .logo{
+      width:60px;height:60px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background:var(--accent);
+      border:1px solid var(--border);
+      font-family:'Playfair Display',serif;
+      color:var(--brand);
+      font-size:22px;font-weight:700;
+    }
+    .brand h4{margin:0;color:var(--primary);font-family:'Playfair Display',serif;font-weight:700}
+    .brand p{margin:0;font-size:13px;color:var(--secondary)}
+
+    h1{
+      margin:8px 0 0 0;
+      font-family:'Playfair Display',serif;
+      color:var(--primary);
+      font-size:42px;line-height:1.1;
+    }
+
+    .sub{font-size:15px;color:var(--secondary);margin-top:6px;max-width:90%}
+
+    .details{
+      margin-top:18px;
+      background:var(--accent);
+      border-radius:12px;padding:18px;border:1px solid var(--border);
+      width:100%;
+      display:flex;gap:18px;align-items:center;flex-wrap:wrap;
+    }
+    .detail-item{min-width:150px}
+    .detail-item small{display:block;font-size:12px;color:var(--secondary)}
+    .detail-item strong{display:block;margin-top:6px;color:var(--primary);font-size:15px}
+
+    /* right: image + RSVP */
+    .side{
+      padding:24px;background:var(--accent);
+      display:flex;flex-direction:column;gap:18px;align-items:stretch;justify-content:center;
+    }
+    .cover{
+      background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop');
+      background-size:cover;background-position:center;border-radius:12px;height:220px;position:relative;border:1px solid var(--border);overflow:hidden;
+    }
+    .cover::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(255,255,255,0.4), transparent);
+    }
+    .cover .label{position:absolute;left:18px;bottom:18px;color:var(--primary);font-family:'Playfair Display',serif;font-size:20px;background:rgba(255,255,255,0.6);padding:4px 10px;border-radius:6px}
+
+    .rsvp{
+      margin-top:6px;display:flex;gap:12px;align-items:center;justify-content:center;
+    }
+    .btn{
+      padding:12px 18px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--primary);cursor:pointer;font-weight:600;
+    }
+    .btn.primary{
+      background:var(--brand);color:#fff;border:none;
+      box-shadow:0 3px 10px rgba(180,139,90,0.25);
+    }
+
+    footer{font-size:13px;color:var(--secondary);margin-top:10px}
+
+    /* RSVP modal */
+    .modal{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);visibility:hidden;opacity:0;transition:all .22s ease;
+      z-index:1200;
+    }
+    .modal.open{visibility:visible;opacity:1}
+    .modal-card{
+      width:100%;max-width:600px;background:var(--card);padding:28px;border-radius:14px;border:1px solid var(--border);
+      box-shadow:0 20px 60px rgba(0,0,0,0.15);
+    }
+    .form-row{display:flex;gap:12px}
+    .form-row input, .form-row textarea{flex:1;padding:12px;border-radius:10px;border:1px solid var(--border);background:#fff;color:var(--primary)}
+    .close{position:absolute;right:18px;top:18px;cursor:pointer;color:var(--secondary)}
+
+    /* small screens */
+    @media (max-width:900px){
+      .container{grid-template-columns:1fr;padding:18px;margin:12px;border-radius:14px}
+      .hero{padding:28px}
+      .cover{height:200px}
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin: 1.5rem auto 0 auto;
+      background: #d4af37;
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.6rem 1.5rem;
+      border-radius: 25px;
+      box-shadow: 0 3px 8px rgba(255,255,255);
+      transition: all 0.3s ease;
+    }
+    .back-btn:hover {
+      background: #c19b2e;
+      box-shadow: 0 5px 12px rgba(255,255,255);
+    }
+
+
+  </style>
+</head>
+<body>
+    <div style="text-align:center;">
+  <button class="back-btn" onclick="window.close()">⬅ Kembali ke Website Utama</button>
+    </div>
+  <div class="container" role="region" aria-label="Undangan digital minimal white">
+
+    <section class="hero">
+      <div class="brand">
+        <div class="logo">MW</div>
+        <div>
+          <h4>Maya &amp; William</h4>
+          <p>Undangan resmi - 20 Desember 2025</p>
+        </div>
+      </div>
+
+      <h1>You're Invited</h1>
+      <p class="sub">Kami dengan gembira mengundang Anda untuk menghadiri perayaan istimewa kami. Kehadiran Anda akan menjadi kehormatan bagi kami.</p>
+
+      <div class="details" role="list">
+        <div class="detail-item" role="listitem">
+          <small>Tanggal</small>
+          <strong>Sabtu, 20 Desember 2025 • 17:00 WIB</strong>
+        </div>
+        <div class="detail-item" role="listitem">
+          <small>Lokasi</small>
+          <strong>Garden Hall, Bandung</strong>
+        </div>
+        <div class="detail-item" role="listitem">
+          <small>Dresscode</small>
+          <strong>Smart Casual - White Tone</strong>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:14px;align-items:center">
+        <button class="btn primary" id="openRsvp">Konfirmasi Kehadiran</button>
+        <a class="btn" href="#map" onclick="alert('Peta lokasi akan ditambahkan nanti')">Lihat Map</a>
+      </div>
+
+      <footer>Harap konfirmasi sebelum 10 Desember 2025 • Kontak: +62 812-9876-5432</footer>
+    </section>
+
+    <aside class="side">
+      <div class="cover" role="img" aria-label="Foto sampul undangan">
+        <div class="label">Reception</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:13px;color:var(--secondary)">Acara</div>
+            <div style="font-weight:700;color:var(--primary)">Resepsi &amp; Gala Dinner</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:12px;color:var(--secondary)">Mulai</div>
+            <div style="font-weight:700">19:00</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px">
+          <button class="btn" onclick="document.getElementById('openRsvp').click()">RSVP</button>
+          <a class="btn primary" href="#details" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">Lihat Detail</a>
+        </div>
+
+        <div style="font-size:13px;color:var(--secondary)">Bagikan undangan ini: <br><small>Gunakan tombol share di browser Anda</small></div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- RSVP modal -->
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <div>
+          <h3 style="margin:0;font-family:'Playfair Display',serif;color:var(--primary)">Konfirmasi Kehadiran</h3>
+          <div style="font-size:13px;color:var(--secondary)">Isi data berikut untuk konfirmasi.</div>
+        </div>
+        <div class="close" id="closeModal">✕</div>
+      </div>
+
+      <form id="rsvpForm" onsubmit="return handleSubmit(event)">
+        <div class="form-row" style="margin-bottom:10px">
+          <input type="text" name="name" placeholder="Nama lengkap" required />
+          <input type="tel" name="phone" placeholder="Nomor telepon" required />
+        </div>
+        <div style="margin-bottom:10px">
+          <label style="font-size:13px;color:var(--secondary)">Jumlah tamu</label>
+          <input type="number" name="guests" min="1" max="10" value="1" style="width:140px;margin-top:8px" />
+        </div>
+        <div style="margin-bottom:14px">
+          <textarea name="message" placeholder="Pesan / catatan (opsional)" rows="3" style="width:100%"></textarea>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <button type="button" class="btn" id="cancel">Batal</button>
+          <button type="submit" class="btn primary">Kirim & Konfirmasi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const openBtn = document.getElementById('openRsvp');
+    const closeBtn = document.getElementById('closeModal');
+    const cancel = document.getElementById('cancel');
+
+    openBtn.addEventListener('click',()=> modal.classList.add('open'));
+    closeBtn.addEventListener('click',()=> modal.classList.remove('open'));
+    cancel.addEventListener('click',()=> modal.classList.remove('open'));
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      const payload = Object.fromEntries(data.entries());
+      console.log('RSVP payload',payload);
+      alert('Terima kasih! Konfirmasi Anda telah diterima.');
+      modal.classList.remove('open');
+      form.reset();
+      return false;
+    }
+  </script>
+
+</body>
+</html>

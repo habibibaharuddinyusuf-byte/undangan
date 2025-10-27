@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Undangan Pernikahan — Alya & Raka</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<style>
+  :root {
+    --gold1: #D4AF37;
+    --gold2: #F2D88B;
+    --bg: #f9f6f2;
+    --card: #fffefc;
+    --text: #222;
+    --muted: #666;
+  }
+
+  [data-theme="dark"] {
+    --bg: #111;
+    --card: #1a1a1a;
+    --text: #f6f6f6;
+    --muted: #aaa;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold1);
+  }
+
+  button, input, textarea, select {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Cover */
+  #cover {
+    position: fixed; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--gold1), var(--gold2));
+    color: white; text-align: center; z-index: 999;
+    transition: opacity 1s ease;
+  }
+
+  #openBtn {
+    background: white; color: #b08d2a; font-weight: 700;
+    border: none; padding: .7rem 1.5rem; border-radius: 999px;
+    cursor: pointer; box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  }
+
+  .flower {
+    position: fixed; top: -50px; font-size: 1.2rem;
+    color: #f8e8b5; animation: fall 6s linear infinite;
+  }
+  @keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+
+  header {
+    background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(242,216,139,0.08));
+    border-radius: 14px; padding: 1rem; margin: 1rem auto;
+    max-width: 980px; text-align: center;
+    box-shadow: 0 6px 18px rgba(163,122,31,0.08);
+  }
+
+  .music-btn, .theme-btn {
+    margin: .4rem;
+    background: linear-gradient(180deg, var(--gold1), var(--gold2));
+    color: white; border: none; padding: .5rem 1rem;
+    border-radius: 999px; cursor: pointer; font-weight: 600;
+  }
+
+  .container { max-width: 980px; margin: auto; padding: 1rem; }
+  .section {
+    background: var(--card); border-radius: 12px;
+    padding: 1rem; margin: 1rem 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  }
+
+  .couple { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1rem; }
+  .person { text-align: center; padding: 1rem; }
+  .person img {
+    width: 120px; height: 120px; object-fit: cover;
+    border-radius: 50%; border: 3px solid var(--gold1);
+  }
+
+  input, textarea, select {
+    width: 100%; margin: .4rem 0; padding: .5rem;
+    border-radius: 8px; border: 1px solid #ddd;
+    background: var(--card); color: var(--text);
+  }
+
+  .btn {
+    background: var(--gold1); color: white; border: none;
+    padding: .6rem 1.2rem; border-radius: 8px;
+    cursor: pointer; font-weight: 600; margin-top: .5rem;
+  }
+
+  .map iframe { width: 100%; height: 250px; border: none; border-radius: 8px; }
+
+  .gift-item {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: .5rem 0; padding: .5rem; border-radius: 8px;
+    background: var(--card);
+  }
+
+  .wishes-list {
+    max-height: 200px; overflow: auto;
+    margin-top: .5rem; border-radius: 8px; background: var(--card);
+    border: 1px solid rgba(0,0,0,0.05); padding: .5rem;
+  }
+
+  .wish { border-bottom: 1px solid rgba(0,0,0,0.05); padding: .4rem 0; }
+  .wish:last-child { border-bottom: none; }
+
+  .share-buttons { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .5rem; }
+  .share-buttons button {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 8px; background: var(--card);
+    padding: .4rem .8rem; cursor: pointer; font-weight: 600;
+  }
+
+  #qrcode {
+    display: flex; justify-content: center; margin-top: 1rem;
+  }
+
+  footer {
+    text-align: center; color: var(--muted); margin: 1rem 0; font-size: .9rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div id="cover">
+  <h1>Alya & Raka</h1>
+  <p>Sabtu, 12 Oktober 2025</p>
+  <button id="openBtn">💌 Buka Undangan</button>
+</div>
+
+<!-- Animasi bunga -->
+<script>
+for(let i=0;i<15;i++){
+  const f=document.createElement('div');
+  f.className='flower'; f.textContent='❀';
+  f.style.left=Math.random()*100+'vw';
+  f.style.animationDelay=Math.random()*6+'s';
+  document.body.appendChild(f);
+}
+</script>
+
+<header>
+  <h1>Undangan Pernikahan</h1>
+  <p>Dengan penuh kebahagiaan kami mengundang Anda</p>
+  <button class="music-btn" id="toggleMusic">Play Musik 🎵</button>
+  <button class="theme-btn" id="toggleTheme">🌙 Ganti Tema</button>
+</header>
+
+<div class="container">
+
+  <section class="section couple">
+    <div class="person">
+      <img src="bride.jpg" alt="Alya">
+      <h3>Alya Salsabila</h3>
+      <p>Putri dari Bapak Ahmad & Ibu Siti</p>
+    </div>
+    <div class="person">
+      <img src="groom.jpg" alt="Raka">
+      <h3>Raka Pratama</h3>
+      <p>Putra dari Bapak Budi & Ibu Sari</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Rangkaian Acara</h2>
+    <p>💍 <b>Akad Nikah:</b> Sabtu, 12 Oktober 2025 pukul 09.00 WIB</p>
+    <p>🎉 <b>Resepsi:</b> Sabtu, 12 Oktober 2025 pukul 11.00–13.00 WIB</p>
+  </section>
+
+  <section class="section">
+    <h2>Lokasi Acara</h2>
+    <p>Grand Ballroom, The Luxury Hotel</p>
+    <div class="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.1663845072847!2d106.80703781531892!3d-6.200000162351016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5f0b2b9b1b1%3A0x0!5e0!3m2!1sid!2sid!4v1690000000000"></iframe>
+    </div>
+    <button class="btn" onclick="window.open('https://maps.google.com?q=Jakarta+Convention+Center','_blank')">📍 Buka di Google Maps</button>
+  </section>
+
+  <section class="section">
+    <h2>Ucapan Pernikahan</h2>
+    <div class="wishes-list" id="wishesList"></div>
+    <input id="wishName" placeholder="Nama Anda">
+    <textarea id="wishText" rows="3" placeholder="Tulis ucapan terbaikmu..."></textarea>
+    <button class="btn" id="sendWish">💌 Kirim Ucapan</button>
+  </section>
+
+  <section class="section">
+    <h2>Wedding Gift</h2>
+    <div class="gift-item">
+      <div><b>BCA a/n Alya Salsabila</b><br>No. Rekening: <span id="bankNo">123-456-7890</span></div>
+      <button class="btn" id="copyRek">Salin</button>
+    </div>
+    <div class="gift-item">
+      <div>GoPay / Dana / OVO</div>
+      <button class="btn" onclick="window.open('https://example.com/payment','_blank')">💳 Kirim Hadiah</button>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Konfirmasi Kehadiran (RSVP)</h2>
+    <input id="rsvpName" placeholder="Nama Anda">
+    <select id="rsvpAttend">
+      <option value="yes">Hadir</option>
+      <option value="no">Tidak Hadir</option>
+    </select>
+    <button class="btn" id="sendRSVP">✅ Kirim Konfirmasi</button>
+  </section>
+
+  <section class="section">
+    <h2>Bagikan Undangan</h2>
+    <div class="share-buttons">
+      <button id="shareWA">WhatsApp</button>
+      <button id="shareTG">Telegram</button>
+      <button id="copyLink">Salin Link</button>
+    </div>
+    <div id="qrcode"></div>
+  </section>
+
+  <footer>&copy; 2025 Luxury Wedding Invitation — Alya & Raka</footer>
+
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="wedding-music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* COVER */
+const cover=document.getElementById('cover');
+const openBtn=document.getElementById('openBtn');
+const music=document.getElementById('bgMusic');
+let playing=false;
+openBtn.onclick=()=>{
+  cover.style.opacity='0';
+  setTimeout(()=>cover.style.display='none',1000);
+  music.play();playing=true;
+};
+
+/* MUSIC */
+const toggleBtn=document.getElementById('toggleMusic');
+toggleBtn.onclick=()=>{
+  if(!playing){music.play();toggleBtn.textContent='Pause Musik ⏸️';playing=true;}
+  else{music.pause();toggleBtn.textContent='Play Musik 🎵';playing=false;}
+};
+
+/* THEME SWITCH */
+const themeBtn=document.getElementById('toggleTheme');
+themeBtn.onclick=()=>{
+  document.body.dataset.theme=document.body.dataset.theme==='dark'?'':'dark';
+  themeBtn.textContent=document.body.dataset.theme==='dark'?'☀️ Tema Terang':'🌙 Ganti Tema';
+};
+
+/* Ucapan */
+const wishList=document.getElementById('wishesList');
+function renderWishes(){
+  const arr=JSON.parse(localStorage.getItem('wishes')||'[]');
+  wishList.innerHTML=arr.length?arr.map(w=>`<div class='wish'><b>${w.name}</b><br>${w.text}</div>`).join(''):'<i>Belum ada ucapan.</i>';
+}
+renderWishes();
+document.getElementById('sendWish').onclick=()=>{
+  const n=document.getElementById('wishName').value||'Anonim';
+  const t=document.getElementById('wishText').value;
+  if(!t)return alert('Tuliskan ucapanmu.');
+  const arr=JSON.parse(localStorage.getItem('wishes')||'[]');
+  arr.push({name:n,text:t});
+  localStorage.setItem('wishes',JSON.stringify(arr));
+  document.getElementById('wishText').value='';
+  renderWishes();
+};
+
+/* Copy Rek */
+document.getElementById('copyRek').onclick=async()=>{
+  await navigator.clipboard.writeText(document.getElementById('bankNo').textContent);
+  alert('Nomor rekening tersalin ✅');
+};
+
+/* RSVP */
+document.getElementById('sendRSVP').onclick=()=>{
+  const n=document.getElementById('rsvpName').value;
+  if(!n)return alert('Isi nama dulu ya');
+  const a=document.getElementById('rsvpAttend').value;
+  const arr=JSON.parse(localStorage.getItem('rsvp')||'[]');
+  arr.push({n,a});
+  localStorage.setItem('rsvp',JSON.stringify(arr));
+  alert('Terima kasih sudah konfirmasi 💖');
+  document.getElementById('rsvpName').value='';
+};
+
+/* SHARE + QR */
+const link=window.location.href;
+document.getElementById('shareWA').onclick=()=>window.open(`https://wa.me/?text=Undangan%20Alya%20%26%20Raka%20💍%0A${encodeURIComponent(link)}`,'_blank');
+document.getElementById('shareTG').onclick=()=>window.open(`https://t.me/share/url?url=${encodeURIComponent(link)}&text=Undangan%20Alya%20%26%20Raka%20💖`,'_blank');
+document.getElementById('copyLink').onclick=async()=>{await navigator.clipboard.writeText(link);alert('Link undangan tersalin 📋');};
+
+/* QR Code */
+new QRCode(document.getElementById("qrcode"),{text:link,width:150,height:150});
+</script>
+</body>
+</html>
