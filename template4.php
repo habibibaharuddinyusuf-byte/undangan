@@ -1,15 +1,21 @@
+<?php
+if(!isset($_GET["u"])){
+    include "template data.php";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan - Soja & Soja</title>
+    <title>Undangan Pernikahan - <?=$femaleName?> & <?=$maleName?></title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/template7.css">
+    <link rel="stylesheet" href="css/template4.css">
 </head>
 
 <body>
@@ -17,7 +23,7 @@
     <div id="opening-cover">
         <div class="particles" id="particles"></div>
         <div class="envelope-container">
-            <h1 class="couple-names">Soja & Habibi</h1>
+            <h1 class="couple-names"><?=$femaleName?> & <?=$maleName?></h1> 
             <div class="envelope" id="envelope">
                 <div class="envelope-flap"></div>
             </div>
@@ -65,7 +71,7 @@
                 <div class="shape square"></div>
             </div>
             <div class="hero-content">
-                <h1 class="hero-title">Soja & Habibi</h1>
+                <h1 class="hero-title"><?=$femaleName?> & <?=$maleName?></h1>
                 <div class="divider"></div>
                 <p class="save-date">25 Desember 2025</p>
             </div>
@@ -76,9 +82,9 @@
             <h2 class="section-title">Pengantin</h2>
             <div class="couple-container">
                 <div class="couple-card fade-in">
-                    <img src="images/cewe.jpg" class="couple-photo" alt="">
-                    <h3 class="couple-name">Soja</h3>
-                    <p class="couple-bio">Putri dari Bapak Ahmad & Ibu Siti</p>
+                    <img src="<?=$femalePicture?>" class="couple-photo" alt="">
+                    <h3 class="couple-name"><?=$femaleName?></h3>
+                    <p class="couple-bio">Putri dari Bapak <?=$femaleDad?> & Ibu <?=$femaleMom?></p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
@@ -86,9 +92,9 @@
                     </div>
                 </div>
                 <div class="couple-card fade-in">
-                    <img src="images/cowo.jpg" class="couple-photo" alt=""/>
-                    <h3 class="couple-name">Habibi</h3>
-                    <p class="couple-bio">Putra dari Bapak Budi & Ibu Ani</p>
+                    <img src="<?=$malePicture?>" class="couple-photo" alt=""/>
+                    <h3 class="couple-name"><?=$maleName?></h3>
+                    <p class="couple-bio">Putra dari Bapak <?=$maleDad?> & Ibu <?=$maleMom?></p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
@@ -125,30 +131,19 @@
         <section class="section gallery-section">
             <h2 class="section-title">Galeri</h2>
             <div class="gallery-grid">
+                <?php
+                    foreach ($gallery as $g) {
+                ?>
                 <div class="gallery-item fade-in">
-                    <img src="images/foto1.jpg" alt="">
+                    <img src="<?=$g?>" alt="">
                     <div class="gallery-overlay">
                         <i class="fas fa-search-plus gallery-icon"></i>
                     </div>
                 </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/foto2.jpg" alt="">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus gallery-icon"></i>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/foto3.jpg" alt="">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus gallery-icon"></i>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/foto4.jpg" alt="">
-                    <div class="gallery-overlay">
-                        <i class="fas fa-search-plus gallery-icon"></i>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
+            </div>
         </section>
 
         <!-- Messages -->
@@ -219,7 +214,7 @@
 
         <!-- Footer -->
         <footer class="footer">
-            <h2 class="footer-names">Soja & Soja</h2>
+            <h2 class="footer-names"><?=$femaleName?> & <?=$maleName?></h2>
             <p class="footer-text">Terima kasih atas doa dan restu Anda</p>
             <p class="footer-text">Made with <span class="heart">❤</span></p>
             <div class="social-icons" style="justify-content: center; margin-top: 1rem;">
@@ -243,6 +238,7 @@
         for (let i = 0; i < 50; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
+            particle.style.top = Math.random() * 100 + '%';
             particle.style.left = Math.random() * 100 + '%';
             particle.style.animationDelay = Math.random() * 4 + 's';
             particle.style.animationDuration = (Math.random() * 3 + 2) + 's';

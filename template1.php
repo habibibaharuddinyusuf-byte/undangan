@@ -1,9 +1,15 @@
+<?php
+if(!isset($_GET["u"])){
+    include "template data.php";
+}
+?>
+
 <!doctype html>
 <html lang="id">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Undangan Pernikahan — Alya & Raka</title>
+<title>Undangan Pernikahan — <?=$femaleName?> & <?=$maleName?></title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
@@ -40,14 +46,14 @@ for(let i=0;i<15;i++){
 
   <section class="section couple">
     <div class="person">
-      <img src="images/cewe.jpg" alt="Soja">
-      <h3>Soja Nyimas</h3>
-      <p>Putri dari Bapak JOkowi & Ibu Srimulyani</p>
+      <img src="<?=$femalePicture?>" alt="<?=$femaleName?>">
+      <h3><?=$femaleFullName?></h3>
+      <p>Putri dari Bapak <?=$femaleDad?> & Ibu <?=$femaleMom?></p>
     </div>
     <div class="person">
-      <img src="images/cowo.jpg" alt="Habibi">
-      <h3>Baharuddin Yusuf AL habibi</h3>
-      <p>Putra dari Bapak Prabowo & Ibu Kartini</p>
+      <img src="<?=$malePicture?>" alt="<?=$maleName?>">
+      <h3><?=$maleFullName?></h3>
+      <p>Putra dari Bapak <?=$maleDad?> & Ibu <?=$maleMom?></p>
     </div>
   </section>
 
@@ -106,7 +112,7 @@ for(let i=0;i<15;i++){
     <div id="qrcode"></div>
   </section>
 
-  <footer>&copy; 2025 Luxury Wedding Invitation — Alya & Raka</footer>
+  <footer>&copy; 2025 Luxury Wedding Invitation — <?=$femaleName?> & <?=$maleName?></footer>
 
 </div>
 

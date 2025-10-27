@@ -8,6 +8,6 @@ isi client
 
 template name
 1 simple tradisional
-3 sakura girl   
-6 colorful modern
-7 glamor monokrom
+2 sakura girl   
+3 colorful modern
+4 glamor monokrom
