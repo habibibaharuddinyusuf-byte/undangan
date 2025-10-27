@@ -1,0 +1,343 @@
+Buatin Website Undangan Digital Ultra Modern & Elegan untuk Anak Muda dengan tema dan color pallete glamor
+
+Konsep Desain:
+
+
+
+Desain ultra modern dengan aesthetic Gen-Z yang eye-catching dan Instagram-worthy
+
+Full color dengan gradasi vibrant: kombinasi sunset orange, pink fuchsia, purple, cyan, dan gold
+
+Bukan monoton - setiap section punya color scheme berbeda yang kohesif
+
+Glassmorphism effect (frosted glass), neumorphism, dan gradient meshes
+
+Dark mode dengan accent neon colors
+
+Parallax scrolling dan 3D transform effects
+
+Micro-interactions di setiap elemen
+
+Struktur & Fitur Lengkap:
+
+
+
+Opening Cover (Fullscreen)
+
+Animated gradient background dengan moving particles/confetti
+
+Centered elegant typography dengan glowing effect
+
+Animated envelope yang membuka saat di-click
+
+Sound effect saat buka undangan
+
+Smooth fade transition ke main content
+
+Hero Section
+
+Full-width background dengan parallax effect
+
+Animated floating geometric shapes (circles, triangles, squares)
+
+Couple names dengan 3D text effect dan gradient fill
+
+Animated divider dengan ornamental design
+
+Save the date dengan flip card animation
+
+Countdown Timer (Sticky/Floating)
+
+Real-time countdown dengan flip animation
+
+Neon glow effect pada angka
+
+Progress bar menuju hari H
+
+Animated background particles
+
+Responsive dan bisa sticky di top saat scroll
+
+Couple Profile Section
+
+Side-by-side cards dengan flip effect untuk foto couple
+
+Hexagon atau circular frame dengan gradient border
+
+Bio singkat dengan typewriter animation
+
+Social media icons dengan hover effects
+
+Instagram-style story highlight design
+
+Love story timeline dengan animated path line
+
+Event Details (Multiple Cards)
+
+Glass card design dengan backdrop blur
+
+Icon animations (calendar, clock, location dengan bounce effect)
+
+Interactive map embed (Google Maps) dengan custom marker
+
+"Add to Calendar" button dengan dropdown (Google, Apple, Outlook)
+
+Direction button dengan smooth pulse animation
+
+QR code untuk location
+
+Gallery Section (Instagram Grid Style)
+
+Masonry/Pinterest-style photo grid
+
+Lightbox modal dengan swipe functionality
+
+Lazy loading images dengan skeleton loader
+
+Filter categories (Prewedding, Engagement, Candid)
+
+Hover zoom effect dengan overlay gradient
+
+"View More" dengan infinite scroll atau load more button
+
+Video Section
+
+Embedded video player (prewedding/love story)
+
+Custom play button dengan animation
+
+Video background dengan overlay
+
+Cinematic frame design
+
+Wedding Wishes/Message Board
+
+Real-time message wall dengan card layout
+
+Filter: All, Wishes, Prayers, Memories
+
+Character counter dengan emoji support
+
+Animated submit button
+
+Like/heart button pada setiap message
+
+Pagination atau infinite scroll
+
+Moderation: name required, max character limit
+
+RSVP Form (Interactive)
+
+Multi-step form dengan progress indicator
+
+Animated form fields dengan floating labels
+
+Dropdown dengan custom styling
+
+Radio buttons: Hadir/Tidak Hadir dengan icon
+
+Number of guests dengan +/- buttons
+
+Meal preference selection (if applicable)
+
+Allergy/dietary notes textarea
+
+Confirmation modal dengan confetti animation
+
+Form validation dengan smooth error messages
+
+Gift Registry Section
+
+Digital envelope dengan flip animation
+
+Multiple payment options dengan icon (bank transfer, e-wallet)
+
+Copy account number dengan click-to-copy feedback
+
+QR code untuk payment
+
+"Send Gift" button dengan shimmer effect
+
+Thank you message animation
+
+Love Story Timeline
+
+Vertical timeline dengan alternating cards
+
+Animated line connecting each milestone
+
+Photos pada setiap milestone dengan parallax
+
+Smooth reveal animation saat scroll
+
+Hover effects dengan glow
+
+Music Player (Floating)
+
+Fixed position music player (bottom corner)
+
+Custom audio player dengan visualizer bars
+
+Play/pause dengan smooth icon transition
+
+Volume slider dengan gradient
+
+Song title marquee animation
+
+Vinyl record spinning animation
+
+Guest Book / Comment Section
+
+Interactive guestbook dengan polaroid-style cards
+
+Filter dan search functionality
+
+Pagination dengan smooth transition
+
+Report inappropriate content button
+
+COVID-19 Protocol Section (Optional)
+
+Icon grid dengan hover info
+
+Animated health protocol icons
+
+Minimalist card design
+
+Footer
+
+Couple names dengan decorative elements
+
+Thank you message dengan animated hearts
+
+Credits dengan gradient text
+
+Social media icons dengan hover effects
+
+"Made with ❤️" dengan pulsing heart
+
+Animasi & Interaksi:
+
+
+
+Smooth scroll dengan easing
+
+Scroll-triggered animations (fade in, slide, zoom)
+
+Parallax effects pada background images
+
+Floating/levitating elements
+
+Hover effects: scale, rotate, glow, color change
+
+Loading screen dengan elegant animation
+
+Cursor trail effect (optional)
+
+Confetti explosion pada milestones
+
+Ripple effect pada button clicks
+
+Magnetic buttons (follow cursor)
+
+Technical Features:
+
+
+
+Fully responsive (mobile-first)
+
+Touch-friendly untuk mobile
+
+Lazy loading untuk performa
+
+Smooth 60fps animations
+
+Local storage untuk RSVP data
+
+Form validation
+
+Copy to clipboard functionality
+
+Share buttons (WhatsApp, Instagram, Facebook)
+
+Download invitation as image
+
+Print-friendly version
+
+SEO optimized meta tags
+
+Fast loading dengan optimized assets
+
+Color Palette (Full Color):
+
+
+
+Primary: Gradient dari #FF6B9D (pink) ke #C06C84 (rose)
+
+Secondary: Gradient dari #4A00E0 (purple) ke #8E2DE2 (violet)
+
+Accent: Gradient dari #FFA500 (orange) ke #FFD700 (gold)
+
+Highlight: #00F5FF (cyan), #7FFF00 (chartreuse)
+
+Background: Dark #1a1a2e dengan gradient overlay
+
+Text: White #ffffff, Light gray #e0e0e0
+
+Cards: Semi-transparent dengan glassmorphism
+
+Typography:
+
+
+
+Heading: Elegant serif font (Playfair Display, Cormorant, Cinzel)
+
+Body: Modern sans-serif (Poppins, Inter, Montserrat)
+
+Accent: Cursive/script untuk couple names (Parisienne, Great Vibes)
+
+Decorative Elements:
+
+
+
+Animated floral illustrations
+
+Geometric shapes floating
+
+Light particles/sparkles
+
+Gradient orbs dengan blur
+
+Decorative borders dan dividers
+
+Vector ornaments
+
+Abstract patterns
+
+Libraries/Tools yang Bisa Digunakan:
+
+
+
+AOS (Animate On Scroll)
+
+Particles.js untuk background effects
+
+GSAP untuk advanced animations
+
+Swiper.js untuk gallery slider
+
+Lightweight modal libraries
+
+Canvas untuk custom effects
+
+Responsiveness:
+
+
+
+Desktop: Multi-column layouts, large images
+
+Tablet: 2-column grid, medium spacing
+
+Mobile: Single column, touch-optimized, hamburger menu
+
+Buat dengan HTML, CSS, dan vanilla JavaScript. Tidak menggunakan localStorage/sessionStorage. Semua data form disimpan dalam variabel JavaScript. Fokus pada visual yang WOW factor, interaksi yang smooth, dan user experience yang memorable!

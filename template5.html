@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Digital</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .cover.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .cover-content {
+            text-align: center;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .cover-content h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .cover-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .open-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .open-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .section {
+            padding: 60px 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section.alt {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #667eea;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #667eea;
+            margin: 10px auto;
+        }
+
+        .couple-names {
+            text-align: center;
+            font-size: 3em;
+            color: #764ba2;
+            margin: 40px 0;
+            font-weight: 300;
+        }
+
+        .couple-names span {
+            display: block;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .couple-names .ampersand {
+            font-size: 0.6em;
+            color: #667eea;
+            margin: 20px 0;
+        }
+
+        .event-details {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            transition: transform 0.3s;
+        }
+
+        .event-item:hover {
+            transform: translateX(10px);
+        }
+
+        .event-icon {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+        }
+
+        .event-info h3 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .event-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .countdown h3 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .time-unit {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            backdrop-filter: blur(10px);
+        }
+
+        .time-unit .number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-unit .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .rsvp-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: transform 0.3s;
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .music-toggle.playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cover" id="cover">
+        <div class="cover-content">
+            <h1>Undangan Digital</h1>
+            <p>Anda diundang ke acara istimewa kami</p>
+            <button class="open-btn" onclick="openInvitation()">Buka Undangan</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="floating-hearts" id="hearts"></div>
+            <h1>THE WEDDING OF</h1>
+            <p class="subtitle">We are getting married!</p>
+        </div>
+
+        <div class="section">
+            <div class="couple-names">
+                <span>Sarah</span>
+                <span class="ampersand">&</span>
+                <span>Michael</span>
+            </div>
+            <p style="text-align: center; color: #666; font-size: 1.1em; line-height: 1.8;">
+                "Love is composed of a single soul inhabiting two bodies"<br>
+                <em>- Aristotle</em>
+            </p>
+        </div>
+
+        <div class="section alt">
+            <h2 class="section-title">Acara</h2>
+            <div class="event-details">
+                <div class="event-item">
+                    <div class="event-icon">📅</div>
+                    <div class="event-info">
+                        <h3>Tanggal</h3>
+                        <p>Sabtu, 15 Februari 2025</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-icon">⏰</div>
+                    <div class="event-info">
+                        <h3>Waktu</h3>
+                        <p>Akad: 08.00 - 10.00 WIB<br>Resepsi: 11.00 - 14.00 WIB</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-icon">📍</div>
+                    <div class="event-info">
+                        <h3>Lokasi</h3>
+                        <p>Grand Ballroom Hotel Mulia<br>Jl. Asia Afrika No. 8, Jakarta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="countdown">
+            <h3>Hitung Mundur Hari Bahagia</h3>
+            <div class="countdown-timer" id="countdown">
+                <div class="time-unit">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Hari</span>
+                </div>
+                <div class="time-unit">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Jam</span>
+                </div>
+                <div class="time-unit">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Menit</span>
+                </div>
+                <div class="time-unit">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">Detik</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Galeri</h2>
+            <div class="gallery">
+                <div class="gallery-item">💑</div>
+                <div class="gallery-item">💐</div>
+                <div class="gallery-item">💍</div>
+                <div class="gallery-item">🎊</div>
+                <div class="gallery-item">🎉</div>
+                <div class="gallery-item">💝</div>
+            </div>
+        </div>
+
+        <div class="section alt">
+            <h2 class="section-title">Konfirmasi Kehadiran</h2>
+            <div class="rsvp-form">
+                <form onsubmit="submitRSVP(event)">
+                    <div class="form-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" required placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance">Konfirmasi Kehadiran</label>
+                        <select id="attendance" required>
+                            <option value="">Pilih</option>
+                            <option value="hadir">Hadir</option>
+                            <option value="tidak">Tidak Hadir</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Jumlah Tamu</label>
+                        <input type="number" id="guests" min="1" max="5" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Ucapan & Doa</label>
+                        <textarea id="message" rows="4" placeholder="Tulis ucapan dan doa Anda..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Kirim Konfirmasi</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu</p>
+            <p style="margin-top: 20px;">❤️ Sarah & Michael ❤️</p>
+        </div>
+    </div>
+
+    <div class="music-toggle" id="musicToggle" onclick="toggleMusic()">
+        🎵
+    </div>
+
+    <script>
+        // Open invitation with animation
+        function openInvitation() {
+            document.getElementById('cover').classList.add('hidden');
+            createFloatingHearts();
+            startCountdown();
+        }
+
+        // Create floating hearts animation
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts');
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 6000);
+            }, 800);
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            const weddingDate = new Date('2025-02-15T08:00:00').getTime();
+            
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // Music toggle
+        let isPlaying = false;
+        function toggleMusic() {
+            const toggle = document.getElementById('musicToggle');
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                toggle.classList.add('playing');
+                toggle.innerHTML = '🔊';
+            } else {
+                toggle.classList.remove('playing');
+                toggle.innerHTML = '🔇';
+            }
+        }
+
+        // RSVP form submission
+        function submitRSVP(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const attendance = document.getElementById('attendance').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('message').value;
+            
+            alert(`Terima kasih ${name}!\n\nKonfirmasi Anda telah diterima.\nStatus: ${attendance === 'hadir' ? 'Hadir' : 'Tidak Hadir'}\nJumlah Tamu: ${guests}\n\nSampai jumpa di hari bahagia kami! ❤️`);
+            
+            event.target.reset();
+        }
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

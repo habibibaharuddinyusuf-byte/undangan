@@ -8,10 +8,14 @@
   --card:#fff;
   --border:#e0e0e0;
 }
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+    box-sizing:border-box;margin:0;padding:0;
+    color: var(--bg);
+}
 body{
   font-family:'Poppins',sans-serif;
-  background:var(--bg);
+  background:var(--text);
   color:var(--text);
   line-height:1.6;
 }
@@ -197,7 +201,7 @@ nav button:hover{background:var(--gold-hover)}
 
 
 header {
-  background: linear-gradient(135deg, black, white );
+  background: linear-gradient(135deg, var(--text), var(--muted) );
   padding: 1rem 2rem 1.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
