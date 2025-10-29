@@ -11,3 +11,14 @@ template name
 2 sakura girl   
 3 colorful modern
 4 glamor monokrom
+
+
+tambahan
+1.music bisa diganti dan ada opsi
+2.castumor bisa ubah segalanya (produk yang jual)
+3.katalog buat 8 biji yang bisa dijual
+4.login bisa nama user pw 8 karakter email tampilan login dimasukkan logo dan warna gold and black
+
+5.tambahkan promo bagi pengguna pertama yang beli khusus (potongan discon 20% bagi yang harga murah dan yang mahal discon 35%)
+6.tercantum jelas nama produk dan perbedaan setiap produk dibawah produk agar pembeli tau perbedaan yang mahal dan yang murah dan sesuai selera
+6.qr untuk undangan dan masuk web toko
