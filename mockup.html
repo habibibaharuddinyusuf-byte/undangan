@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wireframe Undangan Digital</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: white; color: black; }
+        header { border-bottom: 1px solid black; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo-area h1 { font-size: 1.5em; margin: 0; }
+        .sub-nav a { margin: 0 10px; text-decoration: none; color: black; }
+        .sub-nav .active { font-weight: bold; border-bottom: 2px solid black; }
+        .auth-btn { padding: 5px 10px; border: 1px solid black; background: white; cursor: pointer; }
+        .section { padding: 40px 20px; border-bottom: 1px solid #ccc; }
+        h2 { text-align: center; margin-bottom: 20px; }
+        .grid { display: flex; flex-wrap: wrap; justify-content: space-around; }
+        .card { width: 30%; border: 1px solid black; margin: 10px; padding: 15px; text-align: center; }
+        .placeholder-img { height: 100px; background-color: #eee; border: 1px solid black; margin-bottom: 10px; }
+        .feature-card { border: 1px solid black; padding: 15px; margin: 15px; text-align: center; }
+        .price-table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        .price-table th, .price-table td { border: 1px solid black; padding: 10px; text-align: left; }
+        .price-btn { padding: 5px 10px; border: 1px solid black; background: white; cursor: pointer; }
+        .whatsapp-btn { display: block; width: 200px; margin: 20px auto; padding: 10px; border: 2px solid black; background: white; text-align: center; text-decoration: none; color: black; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); justify-content: center; align-items: center; }
+        .modal.open { display: flex; }
+        .modal-card { background: white; padding: 20px; border: 2px solid black; width: 300px; text-align: center; }
+        .tabs { display: flex; justify-content: space-around; margin-bottom: 15px; border-bottom: 1px solid black; }
+        .tab-btn { padding: 5px 10px; cursor: pointer; }
+        .tab-btn.active { font-weight: bold; border-bottom: 2px solid black; }
+        input[type="text"], input[type="email"], input[type="password"] { width: 90%; padding: 8px; margin: 5px 0; border: 1px solid black; }
+        .action-btn { width: 100%; padding: 10px; margin-top: 10px; border: 1px solid black; background: #ddd; cursor: pointer; }
+        .close-modal { margin-top: 10px; border: 1px solid black; background: white; padding: 5px 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="left-section">
+        <div class="logo-area">
+            [Kotak Logo]
+            <h1>Wedding Invitation Digital</h1>
+        </div>
+        <nav class="sub-nav">
+            <a href="#" class="nav-link active">Wedding</a> |
+            <a href="#" class="nav-link">Design Tema</a> |
+            <a href="#" class="nav-link">Layanan</a> |
+            <a href="#" class="nav-link">Harga</a> |
+            <a href="#" class="nav-link">Tentang</a> |
+            <a href="#" class="nav-link">Kontak</a>
+        </nav>
+    </div>
+    <div class="right-section">
+        <button class="auth-btn">Masuk / Daftar</button>
+    </div>
+</header>
+
+---
+
+<div class="section">
+    <h2>Daftar Undangan & Galeri</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="placeholder-img">[Gambar Undangan 1]</div>
+            <h3>Luxury Gold</h3>
+            <p>[Deskripsi Singkat]</p>
+            <button class="price-btn">Lihat Foto</button>
+        </div>
+        <div class="card">
+            <div class="placeholder-img">[Gambar Undangan 2]</div>
+            <h3>Minimal White</h3>
+            <p>[Deskripsi Singkat]</p>
+            <button class="price-btn">Lihat Foto</button>
+        </div>
+        <div class="card">
+            <div class="placeholder-img">[Gambar Undangan 3]</div>
+            <h3>Classic Romance</h3>
+            <p>[Deskripsi Singkat]</p>
+            <button class="price-btn">Lihat Foto</button>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>Pilih Design Tema</h2>
+    <div class="grid">
+        <div class="card">
+            <div class="placeholder-img">[Gambar Template 1]</div>
+            <h3>Simple Tradisional</h3>
+            <button class="price-btn">Lihat Template</button>
+        </div>
+        <div class="card">
+            <div class="placeholder-img">[Gambar Template 2]</div>
+            <h3>Sakura Girl</h3>
+            <button class="price-btn">Lihat Template</button>
+        </div>
+        <div class="card">
+            <div class="placeholder-img">[Gambar Template 3]</div>
+            <h3>Colorful Modern</h3>
+            <button class="price-btn">Lihat Template</button>
+        </div>
+        <div class="card">
+            <div class="placeholder-img">[Gambar Template 4]</div>
+            <h3>Glamor Monokrom</h3>
+            <button class="price-btn">Lihat Template</button>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>Layanan & Fitur</h2>
+    <div style="text-align:center;">
+        [Teks Pendahuluan Layanan]
+    </div>
+    <div class="grid" style="justify-content:center;">
+        <div class="feature-card" style="width: 40%;">
+            <h3>🗺️ Peta Lokasi Interaktif</h3>
+            <p>[Deskripsi Peta]</p>
+            <a href="javascript:void(0)" class="price-btn">Lihat Peta</a>
+        </div>
+        <div class="feature-card" style="width: 40%;">
+            <h3>🎵 Musik Latar</h3>
+            <p>[Deskripsi Musik]</p>
+        </div>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>Harga & Paket</h2>
+    <table class="price-table">
+        <thead>
+            <tr>
+                <th>Paket</th>
+                <th>Fitur Utama</th>
+                <th>Harga</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>**Basic**</td>
+                <td>1 Tema, Detail Acara, Link Peta</td>
+                <td style="text-align:center;">Rp 150.000</td>
+                <td style="text-align:center;"><button class="price-btn">Pesan Sekarang</button></td>
+            </tr>
+            <tr>
+                <td>**Premium**</td>
+                <td>Basic + RSVP Online + Galeri Foto + Musik Latar</td>
+                <td style="text-align:center;">Rp 300.000</td>
+                <td style="text-align:center;"><button class="price-btn">Pesan Sekarang</button></td>
+            </tr>
+            <tr>
+                <td>**Luxury Gold**</td>
+                <td>Premium + Tema Eksklusif + Buku Tamu Digital</td>
+                <td style="text-align:center;">Rp 500.000</td>
+                <td style="text-align:center;"><button class="price-btn">Pesan Sekarang</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+---
+
+<div class="section">
+    <h2>Tentang Kami</h2>
+    <div style="text-align:center;">
+        <p>**Luxury Wedding Invitation** adalah layanan undangan digital yang menghadirkan desain mewah, modern, dan praktis.</p>
+    </div>
+</div>
+
+---
+
+<div class="section">
+    <h2>Kontak Kami</h2>
+    <div style="text-align:center;">
+        <p>Scan barcode berikut untuk menyimpan kontak kami:</p>
+        <div class="placeholder-img" style="width:180px; height:180px; margin: 10px auto;">[QR Kontak]</div>
+        <p>📱 Nomor WhatsApp: **081234567890**<br>✉️ Email: **info@weddingluxury.com**</p>
+        <a href="#" class="whatsapp-btn">Chat via WhatsApp</a>
+    </div>
+</div>
+
+<div class="modal open" style="display:none; position:relative; height:auto; background: none;">
+    <div class="modal-card" style="margin: 20px auto;">
+        <div class="tabs">
+            <div class="tab-btn active">Masuk</div>
+            <div class="tab-btn">Daftar</div>
+        </div>
+        <div class="tab-content">
+            <input type="text" placeholder="Email atau Username" />
+            <input type="password" placeholder="Password" />
+            <button class="action-btn">Masuk</button>
+        </div>
+        <button class="close-modal">Tutup</button>
+    </div>
+</div>
+
+<div class="modal open" style="display:none; position:relative; height:auto; background: none;">
+    <div class="modal-card" style="margin: 20px auto;">
+        <h3>Pesan Sekarang</h3>
+        <div id="orderForm">
+            <input type="text" placeholder="Nama Lengkap" />
+            <input type="email" placeholder="Email" />
+            <input type="text" value="[Paket Pilihan]" readonly />
+            <button class="action-btn">Lanjutkan Bayar</button>
+            <button class="close-modal">Tutup</button>
+        </div>
+        <div id="qrSection" style="display:none;text-align:center;">
+            <p>Scan QR Code untuk membayar</p>
+            <div class="placeholder-img" style="width:180px; height:180px; margin: 10px auto;">[QR Pembayaran]</div>
+            <p>**Ringkasan Pesanan**</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
